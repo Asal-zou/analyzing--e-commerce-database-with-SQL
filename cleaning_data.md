@@ -6,10 +6,11 @@ What issues will you address by cleaning the data?
 
 Queries:
 Below, provide the SQL queries you used to clean your data.
+
 --  changing product price format to numeric and a cleaner look 
 
-,,,select To_char(productprice :: Numeric , '999G999G999'),,, 
-,,, from public.all_sessions;,,,
+````select To_char(productprice :: Numeric , '999G999G999')```
+```` from public.all_sessions;```
 
 -- looking for NUlls
 select To_char(productprice :: Numeric , '999G999G999') as productprice
