@@ -21,6 +21,6 @@ from public.all_sessions
   CASE 
     WHEN productprice IS NULL OR productprice:: Numeric = 0 THEN 'noprice'
     ELSE TO_CHAR(productprice::numeric, '999G999G999')
-  END AS formatted_productprice
+  END AS productprice
 FROM 
   public.all_sessions;````
