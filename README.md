@@ -4,7 +4,7 @@
 (fill in your description and goals here)
 
 ## Process
-### (your step 1)
+### Downloading and transferring CSV files in the PgAdmin database 
 ### (your step 2)
 
 ## Results
