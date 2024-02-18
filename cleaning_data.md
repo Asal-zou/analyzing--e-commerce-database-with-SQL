@@ -99,8 +99,14 @@ FROM  public.all_sessions
 
 -- dividing the unit_price/ 1000.000 and making sure that it only has 3 decimals afterwards 
 ```
-select to_char((unit_price:: numeric/ 1000000), '999G999D999')
-from analytics 
+begin;
+
+Update public.analytics 
+set unit_price= to_char((unit_price:: numeric/ 1000000), '999G999D999') ;
+
+select unit_price from analytics 
+
+commit;
 ```
 
 
