@@ -103,4 +103,11 @@ select to_char((unit_price:: numeric/ 1000000), '999G999D999')
 from analytics 
 ```
 
+--updating it in the table while keeping it as numeric,"3" show 3 decimals afte the number, used Round to keep the unit price numeric  
+```
+update analytics
+set unit_price = ROUND((unit_price::numeric / 1000000), 3)
+```
+
+
 
