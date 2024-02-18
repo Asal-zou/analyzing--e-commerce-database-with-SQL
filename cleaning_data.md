@@ -7,45 +7,30 @@ What issues will you address by cleaning the data?
 Queries:
 Below, provide the SQL queries you used to clean your data.
 
---  changing product price format to numeric and a cleaner look 
+--  changing product price format to numeric and a cleaner look, replacing Null and updating them 
 
-````select To_char(productprice :: Numeric , '999G999G999') from public.all_sessions;````
-
--- looking for Nulls
-
-```
-select To_char(productprice :: Numeric , '999G999G999') as productprice
-from public.all_sessions
-     where productprice= '0';
-```
-	 	 
--- replacing Null
-
-```
-SELECT 
-  CASE 
+````
+UPDATE public.all_sessions
+ SET productprice = CASE 
     WHEN productprice IS NULL OR productprice:: Numeric = 0 THEN 'noprice'
     ELSE TO_CHAR(productprice::numeric, '999G999G999')
-  END AS productprice
-FROM 
-  public.all_sessions;
+  END 
 ```
 
 
 --    changing ptotal_ordered format to numeric and a cleaner look, looking for nulls, making sure it just contains digits 
 
   ```
-SELECT 
-  CASE 
+UPDATE public.sales_report
+ set total_ordered = CASE 
     WHEN cast(total_ordered as Numeric)  = 0 THEN 'noorder'
     ELSE total_ordered 
-  END AS total_ordered 
-FROM public.sales_report
-     WHERE 
-        total_ordered ~ '^\d+$';
+  END 
+WHERE 
+  total_ordered ~ '^\d+$';
 ```
 
---  makingsure sure that city and country have a correct formating and updated the table
+--  Making sure that city and country have the correct formatting and updated table
 (used internent for this part ('[^a-zA-Z\s]', '', 'g'))
 
 ``` UPDATE public.all_sessions
