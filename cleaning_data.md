@@ -52,6 +52,10 @@ WHERE country
        IN ('not set', 'not available in demo dataset');
 ```
 
-
-
+checked for nulls for visitors id  at all_sessions, analytics
+```
+ select fullvisitorid
+ from public.all_sessions
+ where fullvisitorid is null 
+```
 
