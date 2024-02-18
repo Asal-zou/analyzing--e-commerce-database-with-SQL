@@ -24,3 +24,15 @@ from public.all_sessions
   END AS productprice
 FROM 
   public.all_sessions;````
+
+
+--    changing ptotal_ordered format to numeric and a cleaner look, looking for nulls, making sure it just contains digits 
+
+  ````SELECT 
+  CASE 
+    WHEN cast(total_ordered as Numeric)  = 0 THEN 'noorder'
+    ELSE total_ordered 
+  END AS total_ordered 
+FROM public.sales_report
+WHERE 
+  total_ordered ~ '^\d+$';````
