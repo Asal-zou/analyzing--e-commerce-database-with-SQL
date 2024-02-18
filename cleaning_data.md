@@ -23,11 +23,11 @@ UPDATE public.all_sessions
   ```
 UPDATE public.sales_report
  set total_ordered = CASE 
-    WHEN cast(total_ordered as Numeric)  = 0 THEN 'noorder'
-    ELSE total_ordered 
-  END 
-WHERE 
-  total_ordered ~ '^\d+$';
+                           WHEN cast(total_ordered as Numeric)  = 0 THEN 'noorder'
+                           ELSE total_ordered 
+                     END 
+  WHERE 
+      total_ordered ~ '^\d+$';
 ```
 
 --  Making sure that city and country have the correct formatting and updated table
@@ -36,7 +36,7 @@ WHERE
 ``` UPDATE public.all_sessions
         SET
              city = REGEXP_REPLACE(city, '[^a-zA-Z\s]', '', 'g'),
-            country = REGEXP_REPLACE(city, '[^a-zA-Z\s]', '', 'g')
+             country = REGEXP_REPLACE(city, '[^a-zA-Z\s]', '', 'g')
 ```
 
 -- changing "not set" and 'not available in demo dataset' for city and country used (chatgpt for where part)
@@ -48,7 +48,7 @@ SET country = CASE
                     WHEN country = 'not available in demo dataset' THEN 'nocountry'
                     ELSE country
                 END
-WHERE country
+   WHERE country
        IN ('not set', 'not available in demo dataset');
 ```
 
@@ -56,11 +56,11 @@ checked for nulls for visitors id  at all_sessions, analytics
 ```
  select fullvisitorid
  from public.all_sessions
- where fullvisitorid is null 
+      where fullvisitorid is null 
 ```
 
  
---  taking ou Home from all categories  
+--  taking out "Home" from all categories  
 ```
 UPDATE public.all_sessions
 SET v2productcategory = REPLACE(v2productcategory, 'Home', ' ');
@@ -77,8 +77,7 @@ SET v2productcategory = REPLACE(v2productcategory, '/', '   ');
  
 ```
  UPDATE all_sessions
-SET v2productcategory= REGEXP_REPLACE(v2productcategory, '([a-z])([A-Z])', '\1 \2', 'g')
- from all_sessions;
+        SET v2productcategory= REGEXP_REPLACE(v2productcategory, '([a-z])([A-Z])', '\1 \2', 'g');
 ```
 
 - replace all the (not set) to nocategory'
@@ -86,9 +85,9 @@ SET v2productcategory= REGEXP_REPLACE(v2productcategory, '([a-z])([A-Z])', '\1 \
 ```
 UPDATE public.all_sessions
 SET v2productcategory = CASE 
-                    WHEN v2productcategory = '(not set)' THEN 'nocategory'
-                    ELSE v2productcategory
-                END
+                             WHEN v2productcategory = '(not set)' THEN 'nocategory'
+                             ELSE v2productcategory
+                         END
 ``` 
 
 
