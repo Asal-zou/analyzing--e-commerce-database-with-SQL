@@ -34,5 +34,28 @@ FROM
     ELSE total_ordered 
   END AS total_ordered 
 FROM public.sales_report
-WHERE 
-  total_ordered ~ '^\d+$';````
+     WHERE 
+        total_ordered ~ '^\d+$';````
+
+--  makingsure sure that city and country have a correct formating and updated the table
+(used internent for this part ('[^a-zA-Z\s]', '', 'g'))
+
+```` UPDATE public.all_sessions
+        SET
+             city = REGEXP_REPLACE(city, '[^a-zA-Z\s]', '', 'g'),
+            country = REGEXP_REPLACE(city, '[^a-zA-Z\s]', '', 'g')````
+
+-- changing "not set" and 'not available in demo dataset' for city and country used (chatgpt for where part)
+
+````UPDATE public.all_sessions
+SET country = CASE 
+                    WHEN country = 'not set' THEN 'nocountry'
+                    WHEN country = 'not available in demo dataset' THEN 'nocountry'
+                    ELSE country
+                END
+WHERE country
+       IN ('not set', 'not available in demo dataset');````
+
+
+
+
