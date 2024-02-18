@@ -1,6 +1,6 @@
 What issues will you address by cleaning the data?
 
-
+Duplicates , Nulls, 0es, format(text, string), correct way of writing 
 
 
 
