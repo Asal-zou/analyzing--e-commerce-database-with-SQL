@@ -21,44 +21,51 @@ from public.all_sessions
 	 	 
 -- replacing Null
 
-````SELECT 
+```
+SELECT 
   CASE 
     WHEN productprice IS NULL OR productprice:: Numeric = 0 THEN 'noprice'
     ELSE TO_CHAR(productprice::numeric, '999G999G999')
   END AS productprice
 FROM 
-  public.all_sessions;````
+  public.all_sessions;
+```
 
 
 --    changing ptotal_ordered format to numeric and a cleaner look, looking for nulls, making sure it just contains digits 
 
-  ````SELECT 
+  ```
+SELECT 
   CASE 
     WHEN cast(total_ordered as Numeric)  = 0 THEN 'noorder'
     ELSE total_ordered 
   END AS total_ordered 
 FROM public.sales_report
      WHERE 
-        total_ordered ~ '^\d+$';````
+        total_ordered ~ '^\d+$';
+```
 
 --  makingsure sure that city and country have a correct formating and updated the table
 (used internent for this part ('[^a-zA-Z\s]', '', 'g'))
 
-```` UPDATE public.all_sessions
+``` UPDATE public.all_sessions
         SET
              city = REGEXP_REPLACE(city, '[^a-zA-Z\s]', '', 'g'),
-            country = REGEXP_REPLACE(city, '[^a-zA-Z\s]', '', 'g')````
+            country = REGEXP_REPLACE(city, '[^a-zA-Z\s]', '', 'g')
+```
 
 -- changing "not set" and 'not available in demo dataset' for city and country used (chatgpt for where part)
 
-````UPDATE public.all_sessions
+```
+UPDATE public.all_sessions
 SET country = CASE 
                     WHEN country = 'not set' THEN 'nocountry'
                     WHEN country = 'not available in demo dataset' THEN 'nocountry'
                     ELSE country
                 END
 WHERE country
-       IN ('not set', 'not available in demo dataset');````
+       IN ('not set', 'not available in demo dataset');
+```
 
 
 
