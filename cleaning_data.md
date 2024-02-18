@@ -111,16 +111,15 @@ commit;
 
 -- finding how many full visitors Id's are, minding duplicates 
 ```
-select distinct(count(fullVisitoriD))
+select count(distinct fullVisitoriD)
 from all_sessions 
 ```
+
 -- finding how many  visit Id's are, minding duplicates 
-
-select distinct(count(fullVisitoriD))
-from all_sessions
-
-
-
+```
+select count(distinct visitiD)
+from analytics
+```
 
 
 
