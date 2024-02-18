@@ -9,7 +9,7 @@ Below, provide the SQL queries you used to clean your data.
 
 --  changing product price format to numeric and a cleaner look, replacing Null and updating them 
 
-````
+```
 UPDATE public.all_sessions
  SET productprice = CASE 
     WHEN productprice IS NULL OR productprice:: Numeric = 0 THEN 'noprice'
