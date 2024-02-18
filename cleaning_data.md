@@ -59,3 +59,42 @@ checked for nulls for visitors id  at all_sessions, analytics
  where fullvisitorid is null 
 ```
 
+ 
+--  taking ou Home from all categories  
+```
+UPDATE public.all_sessions
+SET v2productcategory = REPLACE(v2productcategory, 'Home', ' ');
+```
+
+-- replacing "/" with ''
+
+```
+UPDATE all_sessions
+SET v2productcategory = REPLACE(v2productcategory, '/', '   ');
+```
+
+--  making sure all words are in the correct setting (used chat gpt for  ([a-z])([A-Z])', '\1 \2', 'g'))
+ 
+```
+ UPDATE all_sessions
+SET v2productcategory= REGEXP_REPLACE(v2productcategory, '([a-z])([A-Z])', '\1 \2', 'g')
+ from all_sessions;
+```
+
+- replace all the (not set) to nocategory'
+
+```
+UPDATE public.all_sessions
+SET v2productcategory = CASE 
+                    WHEN v2productcategory = '(not set)' THEN 'nocategory'
+                    ELSE v2productcategory
+                END
+``` 
+
+
+
+
+
+
+
+
