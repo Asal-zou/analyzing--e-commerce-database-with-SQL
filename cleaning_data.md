@@ -15,7 +15,7 @@ Below, provide the SQL queries you used to clean your data.
 
 ````select To_char(productprice :: Numeric , '999G999G999') as productprice
 from public.all_sessions
-     where productprice= '0';````
+     where productprice= '0';
 	 	 
 -- replacing Null
 
