@@ -90,8 +90,12 @@ SET v2productcategory = CASE
                          END
 ``` 
 
-
-
+-- making sure all currency is in USD
+```
+SELECT currencycode
+FROM  public.all_sessions
+      where currencycode <> 'USD'
+```
 
 
 
