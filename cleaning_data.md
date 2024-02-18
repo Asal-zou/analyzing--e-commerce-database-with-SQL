@@ -36,7 +36,7 @@ UPDATE public.sales_report
 ``` UPDATE public.all_sessions
         SET
              city = REGEXP_REPLACE(city, '[^a-zA-Z\s]', '', 'g'),
-             country = REGEXP_REPLACE(city, '[^a-zA-Z\s]', '', 'g')
+             country = REGEXP_REPLACE(country, '[^a-zA-Z\s]', '', 'g')
 ```
 
 -- changing "not set" and 'not available in demo dataset' for city and country used (chatgpt for where part)
