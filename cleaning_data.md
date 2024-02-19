@@ -121,5 +121,34 @@ select count(distinct visitiD)
 from analytics
 ```
 
+-- checking for nulls for productsku in sales_report and sales_by_sku, and sku in products.checking for duplicates in second code
+
+```
+select productsku 
+from sales_report
+    where productsku = '0'and
+          productsku is null ;
+```
+```
+select count( distinct sku) from public.products;
+```
+
+-- assuming that the columns userid, revenue , unitsold and time on site have only nulls.
+```
+SELECT  Count(*) from analytics 
+where userid is not null
+```
+-- user-id returned with a "0" result, so double-checked and removed the column.
+```
+SELECT SUM(CAST(userid AS numeric)) FROM analytics;
+```
+```
+ALTER TABLE analytics DROP COLUMN userid;
+```
+
+
+
+
+
 
 
