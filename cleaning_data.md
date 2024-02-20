@@ -8,14 +8,19 @@ Queries:
 Below, provide the SQL queries you used to clean your data.
 
 --  changing product price format to numeric and a cleaner look, replacing Null and updating them 
+```
+UPDATE public.all_sessions
+SET productprice = CASE
+    WHEN productprice is null THEN '0'
+    ELSE productprice
+END;
+```
 
 ```
 UPDATE public.all_sessions
- SET productprice = CASE 
-    WHEN productprice IS NULL OR productprice:: Numeric = 0 THEN 'noprice'
-    ELSE TO_CHAR(productprice::numeric, '999G999G999')
-  END 
+set productprice=  CAST(ROUND(CAST(REPLACE(productprice, ',', '') AS NUMERIC)/1000000, 2) AS NUMERIC(12,2))
 ```
+
 
 
 --    changing ptotal_ordered format to numeric and a cleaner look, looking for nulls, making sure it just contains digits 
@@ -23,12 +28,21 @@ UPDATE public.all_sessions
   ```
 UPDATE public.sales_report
  set total_ordered = CASE 
-                           WHEN cast(total_ordered as Numeric)  = 0 THEN 'noorder'
+                           WHEN cast(total_ordered as Numeric) in null THEN 0
                            ELSE total_ordered 
                      END 
   WHERE 
       total_ordered ~ '^\d+$';
 ```
+```
+ALTER TABLE public.sales_report
+ALTER COLUMN total_ordered TYPE NUMERIC
+USING CAST (total_ordered AS NUMERIC)
+```
+
+
+
+
 
 --  Making sure that city and country have the correct formatting and updated table
 (used internent for this part ('[^a-zA-Z\s]', '', 'g'))
@@ -108,6 +122,13 @@ select unit_price from analytics
 
 commit;
 ```
+
+```
+ALTER TABLE public.analytics 
+ALTER COLUMN unit_price TYPE NUMERIC
+USING CAST (unit_price AS NUMERIC)
+```
+
 
 -- finding how many full visitors Id's are, minding duplicates 
 ```
