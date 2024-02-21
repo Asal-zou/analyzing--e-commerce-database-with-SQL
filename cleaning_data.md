@@ -23,7 +23,7 @@ set productprice=  CAST(ROUND(CAST(REPLACE(productprice, ',', '') AS NUMERIC)/10
 
 
 
-**changing ptotal_ordered format to numeric and a cleaner look, looking for nulls, making sure it just contains digits** 
+**Changing ptotal_ordered format to numeric and a cleaner look, looking for nulls, making sure it just contains digits** 
 
   ```
 UPDATE public.sales_report
@@ -53,7 +53,7 @@ USING CAST (total_ordered AS NUMERIC)
              country = REGEXP_REPLACE(country, '[^a-zA-Z\s]', '', 'g')
 ```
 
-**changing "not set" and 'not available in demo dataset' for city and country used (chatgpt for where part)**
+**Changing "not set" and 'not available in demo dataset' for city and country used (chatgpt for where part)**
 
 ```
 UPDATE public.all_sessions
@@ -66,7 +66,7 @@ SET country = CASE
        IN ('not set', 'not available in demo dataset');
 ```
 
-**checked for nulls for visitors id  at all_sessions, analytics**
+**Checked for nulls for visitors id  at all_sessions, analytics**
 ```
  select fullvisitorid
  from public.all_sessions
@@ -104,7 +104,7 @@ SET v2productcategory = CASE
                          END
 ``` 
 
-**making sure all currency is in USD**
+**Making sure all currency is in USD**
 ```
 SELECT currencycode
 FROM  public.all_sessions
@@ -130,19 +130,19 @@ USING CAST (unit_price AS NUMERIC)
 ```
 
 
-**finding how many full visitors Id's are, minding duplicates**
+**finding how many visitors Id's are, minding duplicates**
 ```
 select count(distinct fullVisitoriD)
 from all_sessions 
 ```
 
-**finding how many  visit Id's are, minding duplicates**
+**finding how many visits Id's are, minding duplicates**
 ```
 select count(distinct visitiD)
 from analytics
 ```
 
-**checking for nulls for productsku in sales_report and sales_by_sku, and sku in products.checking for duplicates in second code**
+**Checking for nulls for productsku in sales_report and sales_by_sku, and sku in products.checking for duplicates in second code**
 
 ```
 select productsku 
