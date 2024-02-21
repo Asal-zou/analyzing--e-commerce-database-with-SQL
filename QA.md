@@ -75,4 +75,23 @@ FROM sales_by_sku sbk
 JOIN sales_report sr
 ON sbk.productsku = sr.productsku
 ```
-
+Checking for productssku that exists in sales_by_sku and is null in sales_report
+```
+SELECT sbk.*
+FROM sales_by_sku sbk
+LEFT JOIN sales_report sr
+ON sbk.productsku = sr.productsku 
+WHERE sr.productsku IS NULL;
+```
+chechinkg if there is an order by the produtsku in sales_by_sku 
+```
+SELECT *
+FROM sales_by_sku
+where productsku= '9180753'
+and productsku= '9184677' 
+and productsku= '9184663' 
+and productsku= '9182763'
+and productsku= '9182779' 
+and productsku= '9182182'
+```
+values are 0, it's safe to only use sales_report.
