@@ -23,7 +23,7 @@ set productprice=  CAST(ROUND(CAST(REPLACE(productprice, ',', '') AS NUMERIC)/10
 
 
 
-**Changing ptotal_ordered format to numeric and a cleaner look, looking for nulls, making sure it just contains digits** 
+**Changing product_ordered format to numeric and a cleaner look, looking for nulls, making sure it just contains digits** 
 
   ```
 UPDATE public.sales_report
