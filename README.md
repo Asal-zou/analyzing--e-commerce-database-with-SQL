@@ -15,10 +15,10 @@ The goal of this project was to analyze an e-commerce database to uncover insigh
 (fill in what you discovered this data could tell you and how you used the data to answer those questions)
 
 ## Challenges 
-## Handling null values in critical columns which complicated revenue calculations.
-## Dealing with duplicates in all_sales and analytics table which prevented us from building primary and foreign key relationships.
+## 1-Handling null values in critical columns which complicated revenue calculations.
+## 2-Dealing with duplicates in all_sales and analytics table which prevented us from building primary and foreign key relationships.
 
 
 
 ## Future Goals
-(what would you do if you had more time?)
+## try to figure out what to do with all_sessions duplications to get better answers.
