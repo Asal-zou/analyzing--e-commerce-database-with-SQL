@@ -61,5 +61,18 @@ GROUP BY fullvisitorid, visitid
 HAVING COUNT(*) > 1
 WHERE transactionrevenue IS NULL;
 ```
-**cant define a relationship between all_session and products table using productsku and sku due to having productsku's that dosent exists in product sku**
+**can't define a relationship between all_session and products table using productsku and sku due to having productsku's that dosent exists in product sku**
+
+**checked to see if the values in the sales_by_sku is exacly the same as sales_report**
+```
+SELECT COUNT(*) FROM sales_by_sku ;
+SELECT COUNT(*) FROM sales_report;
+```
+checking if every record exists in sales_report 
+```
+SELECT COUNT(*)
+FROM sales_by_sku sbk
+JOIN sales_report sr
+ON sbk.productsku = sr.productsku
+```
 
