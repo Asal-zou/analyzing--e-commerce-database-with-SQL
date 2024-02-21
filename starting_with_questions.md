@@ -140,9 +140,10 @@ JOIN all_sessions ON Analytics.visitid = all_sessions.visitid
 where and city <> 'nocity' and country <> 'nocountry' 
 GROUP BY country, city
 ORDER BY Estimated_Revenue DESC;
-
+```
 
 Answer:
+
 | Country       | City          | Estimated Revenue |
 |---------------|---------------|-------------------|
 | United States | Seattle       | 11,814,004,889.00 |
@@ -154,6 +155,7 @@ Answer:
 | United States | Ann Arbor     | 385.82            |
 | United States | Detroit       | 338.74            |
 | United States | Houston       | 14.00             |
+
 
 
 
