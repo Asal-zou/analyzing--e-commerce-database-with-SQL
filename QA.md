@@ -45,4 +45,17 @@ where unit_sold::integer > 0
 ```
 **being unable to make a primary key for all_session due to duplications**
 
+**Missing or null values in critical field in all_session tables**
+```
+SELECT COUNT(*) AS null_transaction_revenue
+FROM all_sessions
+```
+```
+SELECT fullvisitorid, visitid, COUNT(*)
+FROM all_sessions
+GROUP BY fullvisitorid, visitid
+HAVING COUNT(*) > 1
+WHERE transactionrevenue IS NULL;
+```
+
 
