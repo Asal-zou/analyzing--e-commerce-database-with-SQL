@@ -5,6 +5,15 @@ What are your risk areas? Identify and describe them.
 
 QA Process:
 Describe your QA process and include the SQL queries used to execute it.
+
+
+**Checking for nulls for visitors id and fullvisitorsid at all_sessions, analytics**
+```
+ select fullvisitorid
+ from public.all_sessions
+      where fullvisitorid is null 
+```
+
 **The duplications in analytics and all_sessions**
  --checking for dupplication
 ```
