@@ -29,13 +29,12 @@ Investigating average browsing times by product category offered insights into c
 
 **Office supplies** dominated browsing time with an average of **16 minutes**.
 
-## Challenges 
-**1-Handling null values in critical columns which complicated revenue calculations.**
-**2-Dealing with duplicates in all_sales and analytics table which prevented us from building primary and foreign key relationships.**
-
 ## Revenue Impact by City/Country
 **Seattle, United States**: with an estimated revenue impact of over **$11 billion**.
 
+## Challenges 
+**1-Handling null values in critical columns which complicated revenue calculations.**
+**2-Dealing with duplicates in all_sales and analytics table which prevented us from building primary and foreign key relationships.**
 
 ## Future Goals
 ## Understanding and resolving what to do with all_session duplications and nulls to get better answers.
