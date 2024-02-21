@@ -61,5 +61,5 @@ GROUP BY fullvisitorid, visitid
 HAVING COUNT(*) > 1
 WHERE transactionrevenue IS NULL;
 ```
-
+**cant define a relationship between all_session and products table using productsku and sku due to having productsku's that dosent exists in product sku**
 
