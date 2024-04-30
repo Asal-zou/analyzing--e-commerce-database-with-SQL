@@ -38,6 +38,7 @@ Investigating average browsing times by product category offered insights into c
 
 ## Challenges 
 **1-Handling null values in critical columns which complicated revenue calculations.**
+
 **2-Dealing with duplicates in all_sales and analytics table which prevented us from building primary and foreign key relationships.**
 
 ## Future Goals
